@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1j8l18tbcwpp"]
+[gd_scene load_steps=4 format=4 uid="uid://d1j8l18tbcwpp"]
 
 [ext_resource type="Texture2D" uid="uid://dr2avjxcbvml6" path="res://plains.png" id="1_yad62"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bv56h"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjjgh"]
 texture = ExtResource("1_yad62")
 0:0/0 = 0
 1:0/0 = 0
@@ -73,10 +73,13 @@ texture = ExtResource("1_yad62")
 4:11/0 = 0
 5:11/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_fiu8u"]
-sources/0 = SubResource("TileSetAtlasSource_bv56h")
+[sub_resource type="TileSet" id="TileSet_3mnf0"]
+sources/1 = SubResource("TileSetAtlasSource_yjjgh")
 
 [node name="maze1" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_fiu8u")
+[node name="LayerHolder" type="Node" parent="."]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="LayerHolder"]
+tile_map_data = PackedByteArray("AAADAAAAAQACAAQAAAAEAAAAAQACAAQAAAAFAAAAAQACAAQAAAAGAAAAAQACAAQAAAAHAAAAAQACAAQAAAAIAAAAAQACAAQAAAAJAAAAAQACAAQAAAAKAAAAAQACAAQAAAALAAAAAQACAAQAAAAMAAAAAQACAAQAAAANAAAAAQACAAQAAAAOAAAAAQACAAQAAAAPAAAAAQACAAQAAAACAAEAAQABAAUAAAACAAAAAQABAAQAAAA=")
+tile_set = SubResource("TileSet_3mnf0")
