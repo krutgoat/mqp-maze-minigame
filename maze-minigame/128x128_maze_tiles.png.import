@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbs7kys0qrk7b"
-path="res://.godot/imported/grass.png-79cf597cc1adecdff9d12adae9606f9b.ctex"
+uid="uid://benrrs7x4uhy8"
+path="res://.godot/imported/128x128_maze_tiles.png-9375040bfef5140a37cfa2061a3ca8da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grass.png"
-dest_files=["res://.godot/imported/grass.png-79cf597cc1adecdff9d12adae9606f9b.ctex"]
+source_file="res://128x128_maze_tiles.png"
+dest_files=["res://.godot/imported/128x128_maze_tiles.png-9375040bfef5140a37cfa2061a3ca8da.ctex"]
 
 [params]
 
