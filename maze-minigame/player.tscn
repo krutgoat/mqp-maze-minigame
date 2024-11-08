@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://et5rcah525uh"]
 
+[ext_resource type="Script" path="res://Player.cs" id="1_lvyee"]
 [ext_resource type="Texture2D" uid="uid://bbyviikfj7ey3" path="res://icon.svg" id="1_ntiqk"]
-[ext_resource type="Script" path="res://player.gd" id="1_yjjvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xgsd"]
 size = Vector2(128, 128)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(302, 196)
-script = ExtResource("1_yjjvb")
+script = ExtResource("1_lvyee")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
