@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://d1j8l18tbcwpp"]
+[gd_scene load_steps=11 format=4 uid="uid://d1j8l18tbcwpp"]
 
 [ext_resource type="Texture2D" uid="uid://bdatcehsl7015" path="res://updatedmazebackground.png" id="1_v7kxa"]
 [ext_resource type="Texture2D" uid="uid://benrrs7x4uhy8" path="res://128x128_maze_tiles.png" id="2_lm6nb"]
 [ext_resource type="PackedScene" uid="uid://et5rcah525uh" path="res://player.tscn" id="3_h43hj"]
+[ext_resource type="PackedScene" uid="uid://biriiq7dr6a3" path="res://flower1lily.tscn" id="4_1uh3n"]
+[ext_resource type="PackedScene" uid="uid://0c3rb2umrqum" path="res://flower2HLily.tscn" id="4_dgg74"]
+[ext_resource type="PackedScene" uid="uid://c0o6bqujgk0uy" path="res://bee.tscn" id="5_326jx"]
+[ext_resource type="PackedScene" uid="uid://ubfhe44cbbpg" path="res://flower3A.tscn" id="5_obtsg"]
+[ext_resource type="PackedScene" uid="uid://c287owcpoon8r" path="res://guard_bee.tscn" id="6_vmfxi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7qwy8"]
 texture = ExtResource("2_lm6nb")
@@ -10,48 +15,48 @@ texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.25, -64, 55.25, -64, 57.75, 64, -58.25, 64)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -47, 64, -48.5, 64, 64, -64, 64)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-36.75, -15.5, -6.75, -44, 64, -64, 64, 64, -57.75, 64)
 3:0/0 = 0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57, 64, -58.5, 64, 58.5, -64, 58)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 4:0/0 = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57.5, -4.25, -55, 37.75, -20.5, 57.75, 64, -64, 64)
 5:0/0 = 0
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.25, -64, 55.25, -64, 57.75, 64, -58.25, 64)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:1/0 = 0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.25, -64, 55.25, -64, 57.75, 64, -58.25, 64)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 3:1/0 = 0
 4:1/0 = 0
-4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.25, -64, 55.25, -64, 57.75, 64, -58.25, 64)
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 5:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
-1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.25, -64, 55.25, -64, 57.75, 64, -58.25, 64)
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.75, -64, 64, -64, 64, 58.5, -20.25, 56, -54.75, 25)
 3:2/0 = 0
-3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57, 64, -58.5, 64, 58.5, -64, 58)
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 4:2/0 = 0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 55.25, -64, 57.75, 44, 34.25, 56.5, -64, 56)
 5:2/0 = 0
 0:3/0 = 0
-0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57, 64, -58.5, 64, 58.5, -64, 58)
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(45.75, -64, 57.25, -47.5, 58.25, 34, 46.25, 57.5, -46.25, 57.5, -59.75, 45.5, -58.75, -50, -49.75, -64)
 1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57, 64, -58.5, 64, 58.5, -64, 58)
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-47.25, -64, 64, -64, 64, 64, -49.75, 64, -64, 43, -64, -53)
 2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57, 64, -58.5, 64, 58.5, -64, 58)
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57, 64, -58.5, 64, 58.5, -64, 58)
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(45.75, -64, 64, -49.5, 64, 44.5, 47.75, 64, -64, 64, -64, -64)
 4:3/0 = 0
-4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.75, -64, 64, -64, 64, 64, -56.75, 64)
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 5:3/0 = 0
-5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -57, 64, -58.5, 64, 58.5, -64, 58)
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 6:3/0 = 0
-6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.25, -64, 55.25, -64, 57.75, 64, -58.25, 64)
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSet" id="TileSet_spaah"]
 tile_size = Vector2i(128, 128)
@@ -68,10 +73,30 @@ texture = ExtResource("1_v7kxa")
 
 [node name="Maze level" type="TileMapLayer" parent="."]
 position = Vector2(0, 5)
-tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwAAAAEAAAAEAAYAAwADAAIAAAAFAAYAAwADAAIAAAAGAAYAAwADAAIAAAAHAAYAAwAAAAEAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAAMAAEAAwADAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwADAAAAAAAIAAEAAwADAAAAAAAHAAEAAwADAAAAAAAGAAEAAwADAAAAAAAFAAEAAwAAAAAAAAAEAAEAAwADAAAAAAADAAEAAwABAAMAAAAFAAIAAwABAAEAAAAFAAMAAwABAAIAAAAMAAMAAwAFAAMAAAALAAMAAwAFAAMAAAAKAAMAAwAFAAMAAAAJAAMAAwABAAMAAAAHAAMAAwAAAAMAAAADAAUAAwABAAEAAAADAAQAAwABAAEAAAADAAMAAwABAAAAAAAHAAUAAwABAAAAAAAHAAQAAwADAAEAAAAJAAQAAwADAAEAAAAKAAQAAwADAAEAAAALAAQAAwADAAEAAAAGAAQAAwADAAEAAAAGAAUAAwADAAEAAAAFAAUAAwADAAEAAAAEAAUAAwADAAEAAAAEAAQAAwADAAEAAAALAAIAAwADAAEAAAAKAAIAAwADAAEAAAAJAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAwADAAEAAAACAAQAAwADAAEAAAACAAMAAwADAAEAAAACAAIAAwADAAEAAAANAAUAAwADAAEAAAAKAAUAAwADAAEAAAAJAAUAAwADAAEAAAAIAAUAAwADAAEAAAACAAEAAwADAAEAAAAMAAUAAwADAAEAAAAMAAIAAwAFAAAAAAACAAUAAwAFAAEAAAALAAUAAwAFAAIAAAABAAcAAwAAAAIAAAACAAcAAwAAAAIAAAADAAcAAwAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwAAAAEAAAAEAAYAAwADAAIAAAAFAAYAAwADAAIAAAAGAAYAAwADAAIAAAAHAAYAAwAAAAEAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwACAAMAAAAIAAEAAwACAAMAAAAHAAEAAwACAAMAAAAGAAEAAwACAAMAAAAFAAEAAwAAAAAAAAAEAAEAAwADAAAAAAADAAEAAwABAAMAAAAFAAIAAwABAAEAAAAFAAMAAwABAAEAAAAMAAMAAwABAAMAAAALAAMAAwADAAEAAAAKAAMAAwADAAMAAAAJAAMAAwABAAMAAAAHAAMAAwAAAAMAAAADAAUAAwABAAEAAAADAAQAAwABAAEAAAADAAMAAwABAAAAAAAHAAUAAwABAAAAAAAHAAQAAwADAAEAAAAJAAQAAwADAAEAAAAKAAQAAwADAAEAAAALAAQAAwADAAEAAAAGAAQAAwADAAEAAAAGAAUAAwADAAEAAAAFAAUAAwADAAEAAAAEAAUAAwADAAEAAAAEAAQAAwADAAEAAAALAAIAAwADAAEAAAAKAAIAAwADAAEAAAAJAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAwADAAEAAAACAAQAAwADAAEAAAACAAMAAwADAAEAAAACAAIAAwADAAEAAAAKAAUAAwADAAEAAAAJAAUAAwADAAEAAAAIAAUAAwADAAEAAAACAAEAAwADAAEAAAAMAAUAAwADAAEAAAABAAcAAwAAAAIAAAACAAcAAwAAAAIAAAADAAcAAwAAAAIAAAAMAAEAAwADAAAAAAAFAAQAAwABAAIAAAA=")
 tile_set = SubResource("TileSet_spaah")
+
+[node name="Flower1L" parent="." instance=ExtResource("4_1uh3n")]
+position = Vector2(1595, 322)
+
+[node name="Flower2HL" parent="." instance=ExtResource("4_dgg74")]
+position = Vector2(316, 706)
+collision_layer = 2
+
+[node name="Flower3Amaryllis" parent="." instance=ExtResource("5_obtsg")]
+position = Vector2(1473, 707)
+collision_layer = 2
 
 [node name="Player" parent="." instance=ExtResource("3_h43hj")]
 position = Vector2(321, 199)
-collision_mask = 2
-speed = 300
+
+[node name="Bee" parent="." instance=ExtResource("5_326jx")]
+position = Vector2(1603, 709)
+
+[node name="Bee2" parent="." instance=ExtResource("5_326jx")]
+position = Vector2(1470, 326)
+
+[node name="guardBee" parent="." instance=ExtResource("6_vmfxi")]
+position = Vector2(1727, 708)
+
+[connection signal="body_entered" from="Flower1L" to="Flower1L" method="_on_Flower_body_entered"]

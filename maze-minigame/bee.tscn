@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0o6bqujgk0uy"]
+
+[ext_resource type="Texture2D" uid="uid://0e4inqldea41" path="res://Bee_Sprites.png" id="1_5hfvd"]
+[ext_resource type="Script" path="res://Bee.cs" id="1_exv7j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rywk0"]
+atlas = ExtResource("1_5hfvd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpvb4"]
+atlas = ExtResource("1_5hfvd")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aspt4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rywk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpvb4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vftg"]
+size = Vector2(118, 100)
+
+[node name="Bee" type="CharacterBody2D" node_paths=PackedStringArray("bee")]
+collision_mask = 2
+script = ExtResource("1_exv7j")
+bee = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_aspt4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1vftg")

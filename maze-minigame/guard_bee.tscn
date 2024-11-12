@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c287owcpoon8r"]
+
+[ext_resource type="Texture2D" uid="uid://0e4inqldea41" path="res://Bee_Sprites.png" id="1_vl1po"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x54w"]
+atlas = ExtResource("1_vl1po")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n87oj"]
+atlas = ExtResource("1_vl1po")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xo52a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x54w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n87oj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nxot"]
+size = Vector2(128, 126)
+
+[node name="guardBee" type="CharacterBody2D"]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xo52a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_4nxot")

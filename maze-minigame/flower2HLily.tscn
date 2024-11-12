@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://0c3rb2umrqum"]
+
+[ext_resource type="Script" path="res://Flower2hLily.cs" id="1_aftid"]
+[ext_resource type="Texture2D" uid="uid://bnlcj2iorixss" path="res://Flower animations.png" id="1_ayt58"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkcma"]
+atlas = ExtResource("1_ayt58")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ijs2"]
+atlas = ExtResource("1_ayt58")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qll70"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkcma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ijs2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5viek"]
+radius = 59.2115
+
+[node name="Flower2HLily" type="Area2D"]
+script = ExtResource("1_aftid")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 1)
+sprite_frames = SubResource("SpriteFrames_qll70")
+frame_progress = 0.359025
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5viek")
