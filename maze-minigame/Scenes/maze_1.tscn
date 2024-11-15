@@ -1,16 +1,16 @@
 [gd_scene load_steps=11 format=4 uid="uid://d1j8l18tbcwpp"]
 
-[ext_resource type="Texture2D" uid="uid://bdatcehsl7015" path="res://updatedmazebackground.png" id="1_v7kxa"]
-[ext_resource type="Texture2D" uid="uid://benrrs7x4uhy8" path="res://128x128_maze_tiles.png" id="2_lm6nb"]
-[ext_resource type="PackedScene" uid="uid://et5rcah525uh" path="res://player.tscn" id="3_h43hj"]
-[ext_resource type="PackedScene" uid="uid://biriiq7dr6a3" path="res://flower1lily.tscn" id="4_1uh3n"]
-[ext_resource type="PackedScene" uid="uid://0c3rb2umrqum" path="res://flower2HLily.tscn" id="4_dgg74"]
-[ext_resource type="PackedScene" uid="uid://c0o6bqujgk0uy" path="res://bee.tscn" id="5_326jx"]
-[ext_resource type="PackedScene" uid="uid://ubfhe44cbbpg" path="res://flower3A.tscn" id="5_obtsg"]
-[ext_resource type="PackedScene" uid="uid://c287owcpoon8r" path="res://guard_bee.tscn" id="6_vmfxi"]
+[ext_resource type="Texture2D" uid="uid://bdatcehsl7015" path="res://Textures/updatedmazebackground.png" id="1_ey0kq"]
+[ext_resource type="Texture2D" uid="uid://benrrs7x4uhy8" path="res://Textures/128x128_maze_tiles.png" id="2_a5xov"]
+[ext_resource type="PackedScene" uid="uid://biriiq7dr6a3" path="res://Scenes/flower1lily.tscn" id="3_lvi22"]
+[ext_resource type="PackedScene" uid="uid://0c3rb2umrqum" path="res://Scenes/flower2HLily.tscn" id="4_25b54"]
+[ext_resource type="PackedScene" uid="uid://ubfhe44cbbpg" path="res://Scenes/flower3A.tscn" id="5_1wvv0"]
+[ext_resource type="PackedScene" uid="uid://et5rcah525uh" path="res://Scenes/player.tscn" id="6_jccqe"]
+[ext_resource type="PackedScene" uid="uid://c0o6bqujgk0uy" path="res://Scenes/bee.tscn" id="7_hhlrc"]
+[ext_resource type="PackedScene" uid="uid://c287owcpoon8r" path="res://Scenes/guard_bee.tscn" id="8_0085f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7qwy8"]
-texture = ExtResource("2_lm6nb")
+texture = ExtResource("2_a5xov")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
@@ -69,34 +69,63 @@ sources/3 = SubResource("TileSetAtlasSource_7qwy8")
 offset_right = 2560.0
 offset_bottom = 1440.0
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("1_v7kxa")
+texture = ExtResource("1_ey0kq")
 
 [node name="Maze level" type="TileMapLayer" parent="."]
 position = Vector2(0, 5)
-tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwAAAAEAAAAEAAYAAwADAAIAAAAFAAYAAwADAAIAAAAGAAYAAwADAAIAAAAHAAYAAwAAAAEAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwACAAMAAAAIAAEAAwACAAMAAAAHAAEAAwACAAMAAAAGAAEAAwACAAMAAAAFAAEAAwAAAAAAAAAEAAEAAwADAAAAAAADAAEAAwABAAMAAAAFAAIAAwABAAEAAAAFAAMAAwABAAEAAAAMAAMAAwABAAMAAAALAAMAAwADAAEAAAAKAAMAAwADAAMAAAAJAAMAAwABAAMAAAAHAAMAAwAAAAMAAAADAAUAAwABAAEAAAADAAQAAwABAAEAAAADAAMAAwABAAAAAAAHAAUAAwABAAAAAAAHAAQAAwADAAEAAAAJAAQAAwADAAEAAAAKAAQAAwADAAEAAAALAAQAAwADAAEAAAAGAAQAAwADAAEAAAAGAAUAAwADAAEAAAAFAAUAAwADAAEAAAAEAAUAAwADAAEAAAAEAAQAAwADAAEAAAALAAIAAwADAAEAAAAKAAIAAwADAAEAAAAJAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAwADAAEAAAACAAQAAwADAAEAAAACAAMAAwADAAEAAAACAAIAAwADAAEAAAAKAAUAAwADAAEAAAAJAAUAAwADAAEAAAAIAAUAAwADAAEAAAACAAEAAwADAAEAAAAMAAUAAwADAAEAAAABAAcAAwAAAAIAAAACAAcAAwAAAAIAAAADAAcAAwAAAAIAAAAMAAEAAwADAAAAAAAFAAQAAwABAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwAAAAEAAAAEAAYAAwADAAIAAAAFAAYAAwADAAIAAAAGAAYAAwADAAIAAAAHAAYAAwAAAAEAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwACAAMAAAAIAAEAAwACAAMAAAAHAAEAAwACAAMAAAAGAAEAAwACAAMAAAAFAAEAAwAAAAAAAAAEAAEAAwADAAAAAAADAAEAAwABAAMAAAAFAAIAAwABAAEAAAAFAAMAAwABAAEAAAAMAAMAAwABAAMAAAALAAMAAwADAAEAAAAKAAMAAwADAAMAAAAJAAMAAwABAAMAAAAHAAMAAwAAAAMAAAADAAUAAwABAAEAAAADAAQAAwABAAEAAAADAAMAAwABAAAAAAAHAAUAAwABAAAAAAAHAAQAAwADAAEAAAAJAAQAAwADAAEAAAAKAAQAAwADAAEAAAALAAQAAwADAAEAAAAGAAQAAwADAAEAAAAGAAUAAwADAAEAAAAFAAUAAwADAAEAAAAEAAUAAwADAAEAAAAEAAQAAwADAAEAAAALAAIAAwADAAEAAAAKAAIAAwADAAEAAAAJAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAwADAAEAAAACAAQAAwADAAEAAAACAAMAAwADAAEAAAACAAIAAwADAAEAAAAKAAUAAwADAAEAAAAJAAUAAwADAAEAAAAIAAUAAwADAAEAAAACAAEAAwADAAEAAAAMAAUAAwADAAEAAAAMAAEAAwADAAAAAAAFAAQAAwABAAIAAAA=")
 tile_set = SubResource("TileSet_spaah")
 
-[node name="Flower1L" parent="." instance=ExtResource("4_1uh3n")]
+[node name="Flower1L" parent="." instance=ExtResource("3_lvi22")]
 position = Vector2(1595, 322)
 
-[node name="Flower2HL" parent="." instance=ExtResource("4_dgg74")]
+[node name="Flower2HL" parent="." instance=ExtResource("4_25b54")]
 position = Vector2(316, 706)
 collision_layer = 2
 
-[node name="Flower3Amaryllis" parent="." instance=ExtResource("5_obtsg")]
+[node name="Flower3Amaryllis" parent="." instance=ExtResource("5_1wvv0")]
 position = Vector2(1473, 707)
 collision_layer = 2
 
-[node name="Player" parent="." instance=ExtResource("3_h43hj")]
+[node name="Player" parent="." instance=ExtResource("6_jccqe")]
 position = Vector2(321, 199)
 
-[node name="Bee" parent="." instance=ExtResource("5_326jx")]
+[node name="Bee" parent="." instance=ExtResource("7_hhlrc")]
 position = Vector2(1603, 709)
 
-[node name="Bee2" parent="." instance=ExtResource("5_326jx")]
+[node name="Bee2" parent="." instance=ExtResource("7_hhlrc")]
 position = Vector2(1470, 326)
 
-[node name="guardBee" parent="." instance=ExtResource("6_vmfxi")]
+[node name="guardBee" parent="." instance=ExtResource("8_0085f")]
 position = Vector2(1727, 708)
+
+[node name="top title" type="Label" parent="."]
+offset_right = 1920.0
+offset_bottom = 120.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 58
+text = "Collect all 3 flowers to guarantee your selection!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lives" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 901.0
+offset_right = 312.0
+offset_bottom = 1080.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 58
+text = "lives:"
+vertical_alignment = 1
+
+[node name="flowers" type="Label" parent="."]
+offset_left = 1139.0
+offset_top = 901.0
+offset_right = 1362.0
+offset_bottom = 1080.0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 58
+text = "flowers:"
+vertical_alignment = 1
 
 [connection signal="body_entered" from="Flower1L" to="Flower1L" method="_on_Flower_body_entered"]

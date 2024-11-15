@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpym5dhd2gkkg"
-path="res://.godot/imported/Minigame_Maze_Background_HD.png-9b3cd000080c35a7006700ad9564afd0.ctex"
+uid="uid://benrrs7x4uhy8"
+path="res://.godot/imported/128x128_maze_tiles.png-1d5eb4944f0bd8c473389b432187e834.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigame_Maze_Background_HD.png"
-dest_files=["res://.godot/imported/Minigame_Maze_Background_HD.png-9b3cd000080c35a7006700ad9564afd0.ctex"]
+source_file="res://Textures/128x128_maze_tiles.png"
+dest_files=["res://.godot/imported/128x128_maze_tiles.png-1d5eb4944f0bd8c473389b432187e834.ctex"]
 
 [params]
 

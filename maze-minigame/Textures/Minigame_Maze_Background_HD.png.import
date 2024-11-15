@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b480stdfpfcgw"
-path="res://.godot/imported/basket.png-a42265f723e6889c1a11fb74cfbdb1d8.ctex"
+uid="uid://cpym5dhd2gkkg"
+path="res://.godot/imported/Minigame_Maze_Background_HD.png-365962fdabff94f76be8ccf5cec2889b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://basket.png"
-dest_files=["res://.godot/imported/basket.png-a42265f723e6889c1a11fb74cfbdb1d8.ctex"]
+source_file="res://Textures/Minigame_Maze_Background_HD.png"
+dest_files=["res://.godot/imported/Minigame_Maze_Background_HD.png-365962fdabff94f76be8ccf5cec2889b.ctex"]
 
 [params]
 

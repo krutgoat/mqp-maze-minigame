@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr2avjxcbvml6"
-path="res://.godot/imported/plains.png-11c7b8cd81d125262d563199ff121c84.ctex"
+uid="uid://0e4inqldea41"
+path="res://.godot/imported/Bee_Sprites.png-c17690f043920f20760dfa98736e432d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://plains.png"
-dest_files=["res://.godot/imported/plains.png-11c7b8cd81d125262d563199ff121c84.ctex"]
+source_file="res://Textures/Bee_Sprites.png"
+dest_files=["res://.godot/imported/Bee_Sprites.png-c17690f043920f20760dfa98736e432d.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

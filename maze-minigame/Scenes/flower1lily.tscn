@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://biriiq7dr6a3"]
 
-[ext_resource type="Script" path="res://Flower1Lily.cs" id="1_1kl5v"]
-[ext_resource type="Texture2D" uid="uid://bnlcj2iorixss" path="res://Flower animations.png" id="1_qo0mu"]
+[ext_resource type="Script" path="res://Scripts/Flower1Lily.cs" id="1_1kl5v"]
+[ext_resource type="Texture2D" uid="uid://bnlcj2iorixss" path="res://Textures/Flower animations.png" id="1_qo0mu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6d4m8"]
 atlas = ExtResource("1_qo0mu")
@@ -40,5 +40,5 @@ frame_progress = 0.961025
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ubq4e")
 
-[connection signal="body_entered" from="." to="." method="_on_fl1_body_entered"]
 [connection signal="body_entered" from="." to="." method="FlowerBodyEntered"]
+[connection signal="body_entered" from="." to="." method="_on_fl1_body_entered"]

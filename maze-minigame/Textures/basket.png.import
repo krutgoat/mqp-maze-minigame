@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0e4inqldea41"
-path="res://.godot/imported/Bee_Sprites.png-d3d9987c5a1e06a4268fdedca0bec46b.ctex"
+uid="uid://b480stdfpfcgw"
+path="res://.godot/imported/basket.png-9236709c14560ba56c2d2f0f2c611fef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bee_Sprites.png"
-dest_files=["res://.godot/imported/Bee_Sprites.png-d3d9987c5a1e06a4268fdedca0bec46b.ctex"]
+source_file="res://Textures/basket.png"
+dest_files=["res://.godot/imported/basket.png-9236709c14560ba56c2d2f0f2c611fef.ctex"]
 
 [params]
 

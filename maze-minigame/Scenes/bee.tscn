@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c0o6bqujgk0uy"]
 
-[ext_resource type="Texture2D" uid="uid://0e4inqldea41" path="res://Bee_Sprites.png" id="1_5hfvd"]
-[ext_resource type="Script" path="res://Bee.cs" id="1_exv7j"]
+[ext_resource type="Texture2D" uid="uid://0e4inqldea41" path="res://Textures/Bee_Sprites.png" id="1_5hfvd"]
+[ext_resource type="Script" path="res://Scripts/Bee.cs" id="1_exv7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rywk0"]
 atlas = ExtResource("1_5hfvd")
