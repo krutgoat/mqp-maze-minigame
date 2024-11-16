@@ -12,9 +12,8 @@ public partial class Flower1Lily : Area2D
         //Connect(Area2D.SignalName.BodyEntered, Callable.From(FlowerBodyEntered));
     }
     public void FlowerBodyEntered(Node2D body) {
-        GD.Print("Entered flower radius");
-        
         if (body.Name == "Player") {
+            GD.Print("Entered flower radius");
             QueueFree();
         }
     }

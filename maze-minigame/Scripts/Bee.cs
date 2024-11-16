@@ -8,6 +8,17 @@ public partial class Bee : CharacterBody2D {
     //private bool isFlipped = false;
     private Vector2 direction = new Vector2(-1,0);
 
+    // public override void _Ready() {
+    //     BodyEntered += BeeBodyEntered;
+    // }
+
+    // public void BeeBodyEntered(Node2D body) {
+    //     if (body.Name == "Player") {
+    //         GD.Print("Entered flower radius");
+    //         QueueFree();
+    //     }
+    // }
+
     public override void _PhysicsProcess(double delta) {
         base._PhysicsProcess(delta);
 

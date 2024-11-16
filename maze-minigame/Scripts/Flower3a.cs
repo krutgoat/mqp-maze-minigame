@@ -8,9 +8,8 @@ public partial class Flower3a : Area2D {
         //Connect(Area2D.SignalName.BodyEntered, Callable.From(FlowerBodyEntered));
     }
     public void FlowerBodyEntered(Node2D body) {
-        GD.Print("Entered flower radius");
-        
-        if (body.Name == "Player") {
+         if (body.Name == "Player") {
+            GD.Print("Entered flower radius");
             QueueFree();
         }
     }
