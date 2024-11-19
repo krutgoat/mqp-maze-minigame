@@ -13,7 +13,7 @@ public partial class TimerMaze : Label {
         GD.Print("Signal Emitted");
     }
     public override void _Ready() {
-        _GlobalMaze = GetNode<GlobalMaze>("res://GlobalMaze");
+        _GlobalMaze = GetNode<GlobalMaze>("/root/GlobalMaze");
 
         //AddChild(mazeTimer);
        //mazeTimer.AutoStart;

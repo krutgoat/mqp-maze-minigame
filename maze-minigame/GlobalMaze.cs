@@ -8,5 +8,8 @@ public partial class GlobalMaze : Node {
         throw new NotImplementedException();
     }
 
-    [Signal] public delegate void onTimerEndEventHandler();    
+    [Signal] public delegate void onTimerEndEventHandler();  
+
+    public int flowersCollected = 0;
+    internal static object _GlobalMaze;
 }
