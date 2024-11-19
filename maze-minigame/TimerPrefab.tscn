@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://blrmgd3qahaon"]
+
+[ext_resource type="StyleBox" uid="uid://th52isekinv3" path="res://TempTimer.tres" id="1_lc2hk"]
+[ext_resource type="Script" path="res://TimerMaze.cs" id="2_qgody"]
+
+[node name="Label" type="Label" node_paths=PackedStringArray("mazeTimer")]
+offset_right = 180.0
+offset_bottom = 114.0
+theme_override_styles/normal = ExtResource("1_lc2hk")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_qgody")
+mazeTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

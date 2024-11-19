@@ -1,13 +1,19 @@
-[gd_scene load_steps=11 format=4 uid="uid://d1j8l18tbcwpp"]
+[gd_scene load_steps=17 format=4 uid="uid://d1j8l18tbcwpp"]
 
 [ext_resource type="Texture2D" uid="uid://bdatcehsl7015" path="res://Textures/updatedmazebackground.png" id="1_ey0kq"]
+[ext_resource type="Script" path="res://Scenes/GameManager.cs" id="1_h42m7"]
 [ext_resource type="Texture2D" uid="uid://benrrs7x4uhy8" path="res://Textures/128x128_maze_tiles.png" id="2_a5xov"]
-[ext_resource type="PackedScene" uid="uid://biriiq7dr6a3" path="res://Scenes/flower1lily.tscn" id="3_lvi22"]
+[ext_resource type="PackedScene" uid="uid://d4ltqaetdojdd" path="res://Scenes/flower1Lily.tscn" id="3_a1gd3"]
 [ext_resource type="PackedScene" uid="uid://0c3rb2umrqum" path="res://Scenes/flower2HLily.tscn" id="4_25b54"]
+[ext_resource type="Script" path="res://Scripts/Flowers.cs" id="4_70ylv"]
 [ext_resource type="PackedScene" uid="uid://ubfhe44cbbpg" path="res://Scenes/flower3A.tscn" id="5_1wvv0"]
+[ext_resource type="Texture2D" uid="uid://ff306y2rq411" path="res://Textures/Flowers/Flower1L.png" id="5_frv2u"]
 [ext_resource type="PackedScene" uid="uid://et5rcah525uh" path="res://Scenes/player.tscn" id="6_jccqe"]
+[ext_resource type="Texture2D" uid="uid://dhq7u5v3ke6ge" path="res://Textures/Flowers/Flower2H.png" id="7_6ch5t"]
 [ext_resource type="PackedScene" uid="uid://c0o6bqujgk0uy" path="res://Scenes/bee.tscn" id="7_hhlrc"]
 [ext_resource type="PackedScene" uid="uid://c287owcpoon8r" path="res://Scenes/guard_bee.tscn" id="8_0085f"]
+[ext_resource type="Texture2D" uid="uid://cnfc4oa7rebj7" path="res://Textures/Flowers/Flower3A.png" id="9_hg7bp"]
+[ext_resource type="PackedScene" uid="uid://blrmgd3qahaon" path="res://TimerPrefab.tscn" id="14_irlie"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7qwy8"]
 texture = ExtResource("2_a5xov")
@@ -66,6 +72,9 @@ sources/3 = SubResource("TileSetAtlasSource_7qwy8")
 
 [node name="maze1" type="Node2D"]
 
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_h42m7")
+
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 2560.0
 offset_bottom = 1440.0
@@ -77,20 +86,35 @@ position = Vector2(0, 5)
 tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwAAAAEAAAAEAAYAAwADAAIAAAAFAAYAAwADAAIAAAAGAAYAAwADAAIAAAAHAAYAAwAAAAEAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwACAAMAAAAIAAEAAwACAAMAAAAHAAEAAwACAAMAAAAGAAEAAwACAAMAAAAFAAEAAwAAAAAAAAAEAAEAAwADAAAAAAADAAEAAwACAAAAAAAFAAIAAwABAAIAAAAFAAMAAwADAAEAAAAMAAMAAwABAAMAAAALAAMAAwADAAEAAAAKAAMAAwADAAMAAAAJAAMAAwABAAMAAAAHAAMAAwAAAAMAAAADAAUAAwABAAEAAAADAAQAAwACAAAAAAADAAMAAwADAAEAAAAHAAUAAwABAAAAAAAHAAQAAwADAAEAAAAJAAQAAwADAAEAAAAKAAQAAwADAAEAAAALAAQAAwADAAEAAAAGAAQAAwADAAEAAAAGAAUAAwADAAEAAAAFAAUAAwADAAEAAAAEAAUAAwADAAEAAAAEAAQAAwACAAMAAAALAAIAAwADAAEAAAAKAAIAAwADAAEAAAAJAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAwADAAEAAAACAAQAAwADAAEAAAACAAMAAwADAAEAAAACAAIAAwADAAEAAAAKAAUAAwADAAEAAAAJAAUAAwADAAEAAAAIAAUAAwADAAEAAAACAAEAAwADAAEAAAAMAAUAAwADAAEAAAAMAAEAAwADAAAAAAAFAAQAAwADAAMAAAADAAIAAwABAAIAAAA=")
 tile_set = SubResource("TileSet_spaah")
 
-[node name="Flower1L" parent="." instance=ExtResource("3_lvi22")]
-position = Vector2(1604, 324)
+[node name="Flower1Lily" parent="." node_paths=PackedStringArray("flowerContainer", "FlowerSprite") instance=ExtResource("3_a1gd3")]
+position = Vector2(1606, 324)
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("4_70ylv")
+flowerContainer = NodePath("../FlowerCollection")
+FlowerSprite = NodePath("AnimatedSprite2D")
+FlowerTexture = ExtResource("5_frv2u")
 
-[node name="Flower2HL" parent="." instance=ExtResource("4_25b54")]
+[node name="AnimatedSprite2D" parent="Flower1Lily" index="0"]
+frame_progress = 0.36861
+
+[node name="Flower2HL" parent="." node_paths=PackedStringArray("flowerContainer", "FlowerSprite") instance=ExtResource("4_25b54")]
 position = Vector2(576, 320)
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("4_70ylv")
+flowerContainer = NodePath("../FlowerCollection")
+FlowerSprite = NodePath("AnimatedSprite2D")
+FlowerTexture = ExtResource("7_6ch5t")
 
-[node name="Flower3Amaryllis" parent="." instance=ExtResource("5_1wvv0")]
-position = Vector2(1473, 707)
+[node name="Flower3Amaryllis" parent="." node_paths=PackedStringArray("flowerContainer", "FlowerSprite") instance=ExtResource("5_1wvv0")]
+position = Vector2(1473, 708)
 collision_layer = 4
 collision_mask = 2
+script = ExtResource("4_70ylv")
+flowerContainer = NodePath("../FlowerCollection")
+FlowerSprite = NodePath("AnimatedSprite2D")
+FlowerTexture = ExtResource("9_hg7bp")
 
 [node name="Player" parent="." instance=ExtResource("6_jccqe")]
 position = Vector2(321, 199)
@@ -146,3 +170,27 @@ theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 58
 text = "flowers:"
 vertical_alignment = 1
+
+[node name="FlowerCollection" type="HBoxContainer" parent="."]
+offset_left = 1382.0
+offset_top = 934.0
+offset_right = 1766.0
+offset_bottom = 1062.0
+
+[node name="Hearts" type="HBoxContainer" parent="."]
+offset_left = 286.0
+offset_top = 934.0
+offset_right = 670.0
+offset_bottom = 1062.0
+
+[node name="Label" parent="." instance=ExtResource("14_irlie")]
+offset_left = 1709.0
+offset_top = 16.0
+offset_right = 1902.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 50
+
+[editable path="Flower1Lily"]
+[editable path="Flower2HL"]
+[editable path="Flower3Amaryllis"]
+[editable path="Label"]

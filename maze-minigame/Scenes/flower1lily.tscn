@@ -1,44 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://biriiq7dr6a3"]
+[gd_scene load_steps=7 format=3 uid="uid://d4ltqaetdojdd"]
 
-[ext_resource type="Script" path="res://Scripts/Flower1Lily.cs" id="1_1kl5v"]
-[ext_resource type="Texture2D" uid="uid://bnlcj2iorixss" path="res://Textures/Flower animations.png" id="1_qo0mu"]
+[ext_resource type="Script" path="res://Scripts/Flower1Lily.cs" id="1_bhm50"]
+[ext_resource type="Texture2D" uid="uid://bnlcj2iorixss" path="res://Textures/Flower animations.png" id="1_cuq11"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6d4m8"]
-atlas = ExtResource("1_qo0mu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qixub"]
+atlas = ExtResource("1_cuq11")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1e8lp"]
-atlas = ExtResource("1_qo0mu")
+[sub_resource type="AtlasTexture" id="AtlasTexture_22nim"]
+atlas = ExtResource("1_cuq11")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4ryup"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjex6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6d4m8")
+"texture": SubResource("AtlasTexture_qixub")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1e8lp")
+"texture": SubResource("AtlasTexture_22nim")
 }],
 "loop": true,
 "name": &"default",
 "speed": 1.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ubq4e"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_l2es0"]
 radius = 59.2115
 
-[node name="Flower" type="Area2D"]
-collision_layer = 2
-script = ExtResource("1_1kl5v")
+[node name="Flower1Lily" type="Area2D"]
+script = ExtResource("1_bhm50")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(4, 0)
-sprite_frames = SubResource("SpriteFrames_4ryup")
-frame_progress = 0.961025
+sprite_frames = SubResource("SpriteFrames_qjex6")
+frame_progress = 0.931163
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ubq4e")
-
-[connection signal="body_entered" from="." to="." method="_on_fl1_body_entered"]
-[connection signal="body_entered" from="." to="." method="FlowerBodyEntered"]
+shape = SubResource("CircleShape2D_l2es0")
