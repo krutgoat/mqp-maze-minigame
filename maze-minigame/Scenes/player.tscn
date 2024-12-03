@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b480stdfpfcgw" path="res://Textures/basket.png" id="2_ynll4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xgsd"]
-size = Vector2(140, 86.2501)
+size = Vector2(130, 86.2501)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)

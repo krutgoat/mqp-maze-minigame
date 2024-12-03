@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ubfhe44cbbpg"]
 
-[ext_resource type="Script" path="res://Scripts/Flower3a.cs" id="1_it2y1"]
+[ext_resource type="Script" path="res://Scripts/Flowers.cs" id="1_k2865"]
 [ext_resource type="Texture2D" uid="uid://bnlcj2iorixss" path="res://Textures/Flower animations.png" id="1_xt7yg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mci1"]
@@ -29,7 +29,7 @@ animations = [{
 radius = 59.2115
 
 [node name="Flower3Amaryllis" type="Area2D"]
-script = ExtResource("1_it2y1")
+script = ExtResource("1_k2865")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sybie")

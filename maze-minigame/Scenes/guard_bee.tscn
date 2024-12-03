@@ -27,8 +27,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nxot"]
 size = Vector2(128, 126)
 
-[node name="guardBee" type="CharacterBody2D"]
+[node name="guardBee" type="StaticBody2D"]
 collision_layer = 2
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xo52a")

@@ -8,7 +8,6 @@ public partial class GameManager : Node2D {
     }
      public override void _Ready() {
         _GlobalMaze = GetNode<GlobalMaze>("/root/GlobalMaze");
-        GD.Print("GlobalMaze value: " + _GlobalMaze); // error; this is null
         _GlobalMaze.onTimerEnd += TimerEnded;
         //GlobalMaze.Connect("onTimerEnded", this, "TimerEnded");
     }

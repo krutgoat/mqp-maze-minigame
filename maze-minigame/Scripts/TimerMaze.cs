@@ -10,7 +10,7 @@ public partial class TimerMaze : Label {
 
     private void TimerEnd() {
         _GlobalMaze.EmitSignal(nameof(GlobalMaze.onTimerEnd)); // emits global signal 
-        GD.Print("Signal Emitted");
+        //GD.Print("Signal Emitted");
     }
     public override void _Ready() {
         _GlobalMaze = GetNode<GlobalMaze>("/root/GlobalMaze");

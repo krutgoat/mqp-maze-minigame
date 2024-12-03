@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://d1j8l18tbcwpp"]
+[gd_scene load_steps=19 format=4 uid="uid://d1j8l18tbcwpp"]
 
 [ext_resource type="Texture2D" uid="uid://bdatcehsl7015" path="res://Textures/updatedmazebackground.png" id="1_ey0kq"]
 [ext_resource type="Script" path="res://Scenes/GameManager.cs" id="1_h42m7"]
 [ext_resource type="Texture2D" uid="uid://benrrs7x4uhy8" path="res://Textures/128x128_maze_tiles.png" id="2_a5xov"]
 [ext_resource type="PackedScene" uid="uid://d4ltqaetdojdd" path="res://Scenes/flower1Lily.tscn" id="3_a1gd3"]
 [ext_resource type="PackedScene" uid="uid://0c3rb2umrqum" path="res://Scenes/flower2HLily.tscn" id="4_25b54"]
-[ext_resource type="Script" path="res://Scripts/Flowers.cs" id="4_70ylv"]
 [ext_resource type="PackedScene" uid="uid://ubfhe44cbbpg" path="res://Scenes/flower3A.tscn" id="5_1wvv0"]
 [ext_resource type="Texture2D" uid="uid://ff306y2rq411" path="res://Textures/Flowers/Flower1L.png" id="5_frv2u"]
 [ext_resource type="PackedScene" uid="uid://et5rcah525uh" path="res://Scenes/player.tscn" id="6_jccqe"]
@@ -13,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://c0o6bqujgk0uy" path="res://Scenes/bee.tscn" id="7_hhlrc"]
 [ext_resource type="PackedScene" uid="uid://c287owcpoon8r" path="res://Scenes/guard_bee.tscn" id="8_0085f"]
 [ext_resource type="Texture2D" uid="uid://cnfc4oa7rebj7" path="res://Textures/Flowers/Flower3A.png" id="9_hg7bp"]
-[ext_resource type="PackedScene" uid="uid://blrmgd3qahaon" path="res://TimerPrefab.tscn" id="14_irlie"]
+[ext_resource type="Script" path="res://Scenes/GuardBee.cs" id="14_b6g84"]
+[ext_resource type="PackedScene" uid="uid://blrmgd3qahaon" path="res://Scenes/TimerPrefab.tscn" id="14_irlie"]
+[ext_resource type="Texture2D" uid="uid://cseqwedqx0ra4" path="res://Textures/128x128 heart.png" id="14_xd0w1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7qwy8"]
 texture = ExtResource("2_a5xov")
@@ -70,27 +71,30 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/3 = SubResource("TileSetAtlasSource_7qwy8")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pc1j"]
+size = Vector2(40, 204)
+
 [node name="maze1" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_h42m7")
 
 [node name="Background" type="TextureRect" parent="."]
+offset_top = 1.0
 offset_right = 2560.0
-offset_bottom = 1440.0
+offset_bottom = 1441.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_ey0kq")
 
 [node name="Maze level" type="TileMapLayer" parent="."]
 position = Vector2(0, 5)
-tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwADAAAAAAAEAAYAAwADAAIAAAAFAAYAAwADAAIAAAAGAAYAAwADAAIAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwACAAMAAAAIAAEAAwACAAMAAAAHAAEAAwAAAAAAAAAGAAEAAwACAAMAAAAFAAEAAwADAAAAAAAEAAEAAwADAAAAAAADAAEAAwACAAAAAAAFAAIAAwADAAEAAAAFAAMAAwADAAEAAAAMAAMAAwABAAMAAAALAAMAAwADAAEAAAAKAAMAAwADAAMAAAAJAAMAAwACAAAAAAAHAAMAAwADAAEAAAADAAQAAwAAAAMAAAADAAMAAwADAAEAAAAHAAQAAwAEAAAAAAAJAAQAAwABAAIAAAAKAAQAAwADAAEAAAALAAQAAwADAAEAAAAGAAQAAwADAAAAAAAGAAUAAwADAAEAAAAFAAUAAwADAAEAAAAEAAQAAwADAAEAAAALAAIAAwADAAEAAAAKAAIAAwADAAEAAAAJAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAwADAAEAAAACAAQAAwADAAEAAAACAAIAAwADAAEAAAAKAAUAAwADAAEAAAAIAAUAAwADAAEAAAACAAEAAwADAAEAAAAMAAUAAwADAAEAAAAMAAEAAwADAAAAAAADAAIAAwABAAIAAAAJAAUAAwADAAEAAAACAAMAAwADAAEAAAAEAAUAAwADAAEAAAAFAAQAAwABAAMAAAAHAAYAAwAAAAEAAAAHAAUAAwABAAEAAAADAAUAAwADAAEAAAAHAAIAAwABAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwADAAAAAAAEAAYAAwADAAIAAAAFAAYAAwAAAAEAAAAGAAYAAwADAAIAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwACAAMAAAAIAAEAAwACAAMAAAAHAAEAAwAAAAAAAAAGAAEAAwACAAMAAAAFAAEAAwADAAAAAAAEAAEAAwADAAAAAAADAAEAAwACAAAAAAAFAAIAAwADAAEAAAAFAAMAAwADAAEAAAAMAAMAAwABAAMAAAALAAMAAwADAAEAAAAKAAMAAwADAAMAAAAJAAMAAwACAAAAAAAHAAMAAwABAAEAAAADAAQAAwABAAMAAAADAAMAAwADAAEAAAAHAAQAAwABAAIAAAAJAAQAAwABAAIAAAAKAAQAAwADAAEAAAALAAQAAwADAAEAAAAGAAQAAwADAAEAAAAGAAUAAwADAAEAAAAFAAUAAwABAAEAAAAEAAQAAwADAAAAAAALAAIAAwADAAEAAAAKAAIAAwADAAEAAAAJAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAwADAAEAAAACAAQAAwADAAEAAAACAAIAAwADAAEAAAAKAAUAAwADAAEAAAAIAAUAAwADAAEAAAACAAEAAwADAAEAAAAMAAUAAwADAAEAAAAMAAEAAwADAAAAAAADAAIAAwABAAIAAAAJAAUAAwADAAEAAAACAAMAAwADAAEAAAAEAAUAAwADAAEAAAAFAAQAAwAEAAAAAAAHAAYAAwADAAAAAAAHAAUAAwADAAEAAAADAAUAAwADAAEAAAAHAAIAAwABAAEAAAA=")
 tile_set = SubResource("TileSet_spaah")
 
 [node name="Flower1Lily" parent="." node_paths=PackedStringArray("flowerContainer", "FlowerSprite") instance=ExtResource("3_a1gd3")]
 position = Vector2(1606, 324)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("4_70ylv")
 flowerContainer = NodePath("../FlowerCollection")
 FlowerSprite = NodePath("AnimatedSprite2D")
 FlowerTexture = ExtResource("5_frv2u")
@@ -102,7 +106,6 @@ frame_progress = 0.36861
 position = Vector2(576, 320)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("4_70ylv")
 flowerContainer = NodePath("../FlowerCollection")
 FlowerSprite = NodePath("AnimatedSprite2D")
 FlowerTexture = ExtResource("7_6ch5t")
@@ -111,38 +114,40 @@ FlowerTexture = ExtResource("7_6ch5t")
 position = Vector2(1473, 708)
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("4_70ylv")
 flowerContainer = NodePath("../FlowerCollection")
 FlowerSprite = NodePath("AnimatedSprite2D")
 FlowerTexture = ExtResource("9_hg7bp")
 
-[node name="Player" parent="." instance=ExtResource("6_jccqe")]
+[node name="Player" parent="." node_paths=PackedStringArray("heartContainer") instance=ExtResource("6_jccqe")]
 position = Vector2(321, 199)
 collision_layer = 2
-collision_mask = 9
+collision_mask = 57
+heartContainer = NodePath("../Hearts")
 speed = 400.0
 
 [node name="Bee" parent="." instance=ExtResource("7_hhlrc")]
 position = Vector2(1603, 709)
 collision_layer = 8
-collision_mask = 11
+collision_mask = 27
 
 [node name="Bee2" parent="." instance=ExtResource("7_hhlrc")]
 position = Vector2(1470, 326)
 collision_layer = 8
-collision_mask = 11
+collision_mask = 27
 
 [node name="Bee3" parent="." instance=ExtResource("7_hhlrc")]
 position = Vector2(705, 448)
 collision_layer = 8
-collision_mask = 11
+collision_mask = 27
 
-[node name="guardBee" parent="." instance=ExtResource("8_0085f")]
+[node name="guardBee" parent="." node_paths=PackedStringArray("guardBee") instance=ExtResource("8_0085f")]
 position = Vector2(1727, 708)
-collision_layer = 8
+collision_layer = 16
 collision_mask = 9
+script = ExtResource("14_b6g84")
+guardBee = NodePath("../Flower1Lily/AnimatedSprite2D")
 
-[node name="top title" type="Label" parent="."]
+[node name="top title Text" type="Label" parent="."]
 offset_right = 1920.0
 offset_bottom = 120.0
 theme_type_variation = &"HeaderLarge"
@@ -151,7 +156,7 @@ text = "Collect all 3 flowers to guarantee your selection!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="lives" type="Label" parent="."]
+[node name="Lives Text" type="Label" parent="."]
 offset_left = 128.0
 offset_top = 901.0
 offset_right = 312.0
@@ -161,7 +166,25 @@ theme_override_font_sizes/font_size = 58
 text = "lives:"
 vertical_alignment = 1
 
-[node name="flowers" type="Label" parent="."]
+[node name="Hearts" type="HBoxContainer" parent="."]
+offset_left = 284.0
+offset_top = 934.0
+offset_right = 668.0
+offset_bottom = 1062.0
+
+[node name="heart1" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("14_xd0w1")
+
+[node name="heart2" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("14_xd0w1")
+
+[node name="heart3" type="TextureRect" parent="Hearts"]
+layout_mode = 2
+texture = ExtResource("14_xd0w1")
+
+[node name="Flowers Text" type="Label" parent="."]
 offset_left = 1139.0
 offset_top = 901.0
 offset_right = 1362.0
@@ -177,20 +200,27 @@ offset_top = 934.0
 offset_right = 1766.0
 offset_bottom = 1062.0
 
-[node name="Hearts" type="HBoxContainer" parent="."]
-offset_left = 286.0
-offset_top = 934.0
-offset_right = 670.0
-offset_bottom = 1062.0
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1819, 703)
+collision_layer = 32
+collision_mask = 2
+metadata/_edit_group_ = true
 
-[node name="Label" parent="." instance=ExtResource("14_irlie")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2pc1j")
+
+[node name="Timer" parent="." instance=ExtResource("14_irlie")]
 offset_left = 1709.0
 offset_top = 16.0
 offset_right = 1902.0
 offset_bottom = 111.0
 theme_override_font_sizes/font_size = 50
 
+[node name="Timer" parent="Timer" index="0"]
+wait_time = 20.0
+one_shot = true
+
 [editable path="Flower1Lily"]
 [editable path="Flower2HL"]
 [editable path="Flower3Amaryllis"]
-[editable path="Label"]
+[editable path="Timer"]

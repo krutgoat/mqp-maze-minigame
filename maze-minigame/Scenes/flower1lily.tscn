@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d4ltqaetdojdd"]
 
-[ext_resource type="Script" path="res://Scripts/Flower1Lily.cs" id="1_bhm50"]
 [ext_resource type="Texture2D" uid="uid://bnlcj2iorixss" path="res://Textures/Flower animations.png" id="1_cuq11"]
+[ext_resource type="Script" path="res://Scripts/Flowers.cs" id="1_fd1pm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qixub"]
 atlas = ExtResource("1_cuq11")
@@ -29,7 +29,7 @@ animations = [{
 radius = 59.2115
 
 [node name="Flower1Lily" type="Area2D"]
-script = ExtResource("1_bhm50")
+script = ExtResource("1_fd1pm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qjex6")
