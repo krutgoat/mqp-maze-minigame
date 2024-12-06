@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdatcehsl7015"
-path="res://.godot/imported/updatedmazebackground.png-d687ff56e88c3f0351f70831e8ef9e0a.ctex"
+uid="uid://cflebcyoegha3"
+path="res://.godot/imported/1Lily64.png-870b109b7a1755f1f2d76e417c5e1838.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/updatedmazebackground.png"
-dest_files=["res://.godot/imported/updatedmazebackground.png-d687ff56e88c3f0351f70831e8ef9e0a.ctex"]
+source_file="res://Textures/Flowers/1Lily64.png"
+dest_files=["res://.godot/imported/1Lily64.png-870b109b7a1755f1f2d76e417c5e1838.ctex"]
 
 [params]
 

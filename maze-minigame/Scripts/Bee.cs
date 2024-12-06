@@ -5,6 +5,8 @@ public partial class Bee : CharacterBody2D {
     private GlobalMaze _GlobalMaze; // custom signals singleton
     
 	[Export] public float beeSpeed = 200.0f;
+    public bool canMove = true;
+
     [Export] private Vector2 currentVelocity;
     [Export] private AnimatedSprite2D bee;
 
@@ -26,15 +28,20 @@ public partial class Bee : CharacterBody2D {
     }
 
     public override void _PhysicsProcess(double delta) {
-        base._PhysicsProcess(delta);
+        
+        // if (canMove == true) {	
+        //     currentVelocity = beeSpeed * direction; // set currentVelocity 
+        // }
+        // else {
+		// 	currentVelocity = new Vector2(0,0);
+		// }
 
         if (IsOnWall()) { // check if bee hit something
             direction *= -1; // flip direction
-            //bee.SetFrameAndProgress(1, 0); // flip sprite
             bee.SetFlipH(!bee.IsFlippedH());
         }
-
-        currentVelocity = beeSpeed * direction; // set currentVelocity
+        
+        currentVelocity = beeSpeed * direction; // set currentVelocity 
         Velocity = currentVelocity;
         MoveAndSlide();
         
@@ -44,9 +51,11 @@ public partial class Bee : CharacterBody2D {
             
             //GD.Print("Bee collided with ", collidingBody);
             if (collidingBody == "Player") {
-                //_GlobalMaze.EmitSignal("damagePlayer");
-                
+
                 _GlobalMaze.EmitSignal(nameof(GlobalMaze.damagePlayer)); // emits global signal 
+                //canMove = false;
+                //direction *= -1; // flip direction
+                //bee.SetFlipH(!bee.IsFlippedH());
 
             }
         }

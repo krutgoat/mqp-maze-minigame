@@ -6,10 +6,13 @@ public partial class Flowers : Area2D {
     [Export] public BoxContainer flowerContainer; // bring existing container into script
     [Export] AnimatedSprite2D FlowerSprite = new AnimatedSprite2D();
     [Export] Texture2D FlowerTexture = new Texture2D();
+    
     public override void _Ready() {
         _GlobalMaze = GetNode<GlobalMaze>("/root/GlobalMaze");
         BodyEntered += FlowerBodyEntered;
+       
     }
+
 
     public void FlowerBodyEntered(Node2D body) {
          if (body.Name == "Player") {
@@ -26,6 +29,7 @@ public partial class Flowers : Area2D {
             // put texture in the textureRect
             flowerRect.Texture = FlowerTexture;
             flowerContainer.AddChild(flowerRect);
+            
         }
     }
 

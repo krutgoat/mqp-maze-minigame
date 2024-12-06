@@ -26,11 +26,12 @@ public partial class GuardBee : StaticBody2D {
     private void OneFlowerCollected() {
         var tween = GetTree().CreateTween();
         tween.TweenProperty(this, "modulate:a", 0, fadeDuration).SetEase(Tween.EaseType.Out);
-        //tween.Play();
-        //await tween.Finished();
-        //tween.Kill();
-		//Visible = false;
+
         //SetCollisionMaskValue(5, false);
 		
 	}
+
+    public override void _PhysicsProcess(double delta) {
+        
+    }
 }

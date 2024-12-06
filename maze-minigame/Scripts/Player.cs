@@ -8,6 +8,8 @@ public partial class Player : CharacterBody2D {
 	
  
 	[Export] public float speed = 200.0f;
+	public bool canMove = true;
+
 	private Vector2 currentVelocity;
 	public Vector2 last_direction;
 
@@ -17,14 +19,15 @@ public partial class Player : CharacterBody2D {
 
 		_GlobalMaze.damagePlayer += HandleDamagePlayer; // connect to damagePlayer signal; this will run HandleDamagePlayer()
 		_GlobalMaze.flowerCollected += OneFlowerCollected;
+		
+		//_GlobalMaze.gameOver +=
 
     }
 
 	private void OneFlowerCollected() {
-		SetCollisionMaskValue(5, false);
-
+		SetCollisionMaskValue(5, false); // player will be able to walk thru (now invisible) guard bee
 	}
-
+	
 	private void HandleDamagePlayer() {
 		
 		if (_GlobalMaze.heartsRemaining > 0) {
@@ -32,24 +35,47 @@ public partial class Player : CharacterBody2D {
 			_GlobalMaze.heartsRemaining -= 1; // subtract 1 heart
 			GD.Print("Hearts remaining: ", _GlobalMaze.heartsRemaining);
 
-			//heartContainer.RemoveChild(heartContainer.GetChild(-1)); // remove last child
-			//GD.Print("heart container: ", heartContainer);
-			//GD.Print("heart container children: ", heartContainer.GetChildren());
+			heartContainer.GetChild(-1).QueueFree(); // removes last child from container
+			
+			GD.Print("Now playing damage animation..");
+			
+			canMove = false;
+			DamageAnimation();
 
-			heartContainer.GetChild(-1).QueueFree();
-		
 		}
+
 		if (_GlobalMaze.heartsRemaining == 0) { // gameOver check
 			_GlobalMaze.isGameOver = true;
 			GD.Print("The game is now over.");
 		}
+
+		// flashing red tween call
 		
 		
 		
 	}
 
+	public float fadeDuration = 0.2f; // for tween function
+	private void DamageAnimation() { // blinking red damage
+		var tween = GetTree().CreateTween();
+		
+		for (int i = 0; i < 3; i++) {
+			tween.TweenProperty(this, "modulate:r", 1.5, fadeDuration);
+			tween.Parallel().TweenProperty(this, "modulate:g", 0.8, fadeDuration);
+			tween.Parallel().TweenProperty(this, "modulate:b", 0.8, fadeDuration);
+			
+			tween.TweenProperty(this, "modulate:r", 1, fadeDuration);
+			tween.Parallel().TweenProperty(this, "modulate:g", 1, fadeDuration);
+			tween.Parallel().TweenProperty(this, "modulate:b", 1, fadeDuration);
+		}  
 
+		//tween.TweenCallback(canMove = true); //this waits for tween to finish before calling a function
+		tween.TweenCallback(Callable.From(() => canMove = true)); //this waits for tween to finish before changing image
+	}
 
+	// public void afterDamage() {
+	// 	canMove = true;
+	// }
     public override void _Input(InputEvent @event) {
 		handleInput();
     }
@@ -62,24 +88,42 @@ public partial class Player : CharacterBody2D {
 		// if (collision != null) { // detect collision playerside
         //     GD.Print("Player collided with: ", ((Node)collision.GetCollider()).Name);
         // }
+		
+		for (int i = 0; i < GetSlideCollisionCount(); i++) { // check for player collision
+            var collision = GetSlideCollision(i);
+            var collidingBody = ((Node)collision.GetCollider()).Name; // get name of colliding body
+            
+            //GD.Print("Bee collided with ", collidingBody);
+            if (collidingBody == "GuardBee") {
+                //_GlobalMaze.EmitSignal("damagePlayer");
+                GD.Print("You can't leave yet! Collect at least 1 flower to exit.");
+                //_GlobalMaze.EmitSignal(nameof(GlobalMaze.damagePlayer)); // emits global signal 
+
+            }
+        }
     }
 
 	// update velocity based on player input
-	private void handleInput() {		
-		currentVelocity = Input.GetVector("left", "right", "up", "down");
+	private void handleInput() {	
 
-		if (Math.Abs(currentVelocity.X) > 0 && Math.Abs(currentVelocity.Y) > 0) { // if moving
-			if (Input.IsActionJustPressed("left") || Input.IsActionJustPressed("right")) { // L & R
-				currentVelocity = new Vector2(currentVelocity.X, 0);
+		if (canMove == true) {	
+			currentVelocity = Input.GetVector("left", "right", "up", "down");
+			if (Math.Abs(currentVelocity.X) > 0 && Math.Abs(currentVelocity.Y) > 0) { // if moving
+				if (Input.IsActionJustPressed("left") || Input.IsActionJustPressed("right")) { // L & R
+					currentVelocity = new Vector2(currentVelocity.X, 0);
+				}
+				else if (Input.IsActionJustPressed("up") || Input.IsActionJustPressed("down")) {
+					currentVelocity = new Vector2(0, currentVelocity.Y);
+				}
+				else {
+					currentVelocity = last_direction;
+				}
 			}
-			else if (Input.IsActionJustPressed("up") || Input.IsActionJustPressed("down")) {
-				currentVelocity = new Vector2(0, currentVelocity.Y);
-			}
-			else {
-				currentVelocity = last_direction;
-			}
+			last_direction = currentVelocity;
 		}
-		last_direction = currentVelocity;
+		else {
+			currentVelocity = new Vector2(0,0);
+		}
 		currentVelocity *= speed;
 	}
 
