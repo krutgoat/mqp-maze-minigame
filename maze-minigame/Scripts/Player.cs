@@ -5,7 +5,8 @@ using System.Security.Cryptography.X509Certificates;
 public partial class Player : CharacterBody2D {
 	private GlobalMaze _GlobalMaze; // custom signals singleton
 	[Export] public BoxContainer heartContainer; // bring existing heart container into script
-	
+	[Export] private AnimationPlayer _pauseAnimator;
+
  
 	[Export] public float speed = 200.0f;
 	public bool canMove = true;
@@ -40,6 +41,7 @@ public partial class Player : CharacterBody2D {
 			GD.Print("Now playing damage animation..");
 			
 			canMove = false;
+			SetCollisionMaskValue(4, false); // not colliding with bees anymore
 			DamageAnimation();
 
 		}
@@ -47,12 +49,12 @@ public partial class Player : CharacterBody2D {
 		if (_GlobalMaze.heartsRemaining == 0) { // gameOver check
 			_GlobalMaze.isGameOver = true;
 			GD.Print("The game is now over.");
+	        _pauseAnimator.Play("pause");
+			GetTree().Paused = true;
+
 		}
 
 		// flashing red tween call
-		
-		
-		
 	}
 
 	public float fadeDuration = 0.2f; // for tween function
@@ -69,8 +71,9 @@ public partial class Player : CharacterBody2D {
 			tween.Parallel().TweenProperty(this, "modulate:b", 1, fadeDuration);
 		}  
 
-		//tween.TweenCallback(canMove = true); //this waits for tween to finish before calling a function
-		tween.TweenCallback(Callable.From(() => canMove = true)); //this waits for tween to finish before changing image
+		//tween.TweenCallback waits for tween to finish before calling a function
+		tween.TweenCallback(Callable.From(() => canMove = true)); //this waits for tween to finish before changing image.
+		tween.TweenCallback(Callable.From(() => SetCollisionMaskValue(4, true))); // able to take damage from bees again
 	}
 
 	// public void afterDamage() {

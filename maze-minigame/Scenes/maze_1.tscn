@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://d1j8l18tbcwpp"]
+[gd_scene load_steps=26 format=4 uid="uid://d1j8l18tbcwpp"]
 
 [ext_resource type="Script" path="res://Scripts/GameManager.cs" id="1_h42m7"]
 [ext_resource type="Texture2D" uid="uid://wyrdef46ql72" path="res://Textures/mazebackgroundHD.png" id="2_a7e27"]
@@ -100,13 +100,79 @@ physics_layer_0/collision_mask = 0
 sources/3 = SubResource("TileSetAtlasSource_7qwy8")
 sources/0 = SubResource("TileSetAtlasSource_bplx4")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnooo"]
+size = Vector2(219.302, 28.0045)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pc1j"]
 size = Vector2(40, 204)
 
-[node name="Maze1" type="Node2D"]
+[sub_resource type="Shader" id="Shader_y7236"]
+code = "shader_type canvas_item;
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("flowerSprites")]
+uniform float 
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qu2pi"]
+shader = SubResource("Shader_y7236")
+
+[sub_resource type="Animation" id="Animation_shq6m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wu13u"]
+resource_name = "pause"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwcei"]
+_data = {
+"RESET": SubResource("Animation_shq6m"),
+"pause": SubResource("Animation_wu13u")
+}
+
+[node name="Maze1" type="Node2D"]
+scale = Vector2(1.333, 1.333)
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("_pauseAnimator", "_continue", "flowerSprites")]
 script = ExtResource("1_h42m7")
+_pauseAnimator = NodePath("../GameOverGood/AnimationPlayer")
+_continue = NodePath("../GameOverGood/Button")
 flowerSprites = [NodePath("../Flower1Lily/AnimatedSprite2D"), NodePath("../Flower2HL/AnimatedSprite2D"), NodePath("../Flower3Amaryllis/AnimatedSprite2D")]
 
 [node name="Background" type="TextureRect" parent="."]
@@ -120,6 +186,13 @@ texture = ExtResource("2_a7e27")
 position = Vector2(0, 5)
 tile_map_data = PackedByteArray("AAABAAYAAwACAAIAAAACAAYAAwADAAIAAAADAAYAAwADAAAAAAAEAAYAAwADAAIAAAAFAAYAAwAAAAEAAAAGAAYAAwADAAIAAAAIAAYAAwADAAAAAAAJAAYAAwADAAIAAAAKAAYAAwADAAIAAAALAAYAAwADAAIAAAAMAAYAAwADAAIAAAANAAYAAwADAAMAAAABAAUAAwACAAEAAAABAAQAAwACAAEAAAABAAMAAwACAAEAAAABAAIAAwACAAEAAAABAAEAAwABAAAAAAANAAQAAwABAAIAAAANAAMAAwAGAAMAAAANAAIAAwABAAEAAAANAAEAAwAEAAAAAAALAAEAAwADAAAAAAAKAAEAAwADAAAAAAAJAAEAAwACAAMAAAAIAAEAAwACAAMAAAAHAAEAAwAAAAAAAAAGAAEAAwACAAMAAAAFAAEAAwADAAAAAAAEAAEAAwADAAAAAAADAAEAAwACAAAAAAAFAAIAAwADAAEAAAAFAAMAAAADAAEAAAAMAAMAAwABAAMAAAALAAMAAwADAAEAAAAKAAMAAwADAAMAAAAJAAMAAwACAAAAAAAHAAMAAwABAAEAAAADAAQAAwABAAMAAAAHAAQAAwABAAIAAAAJAAQAAwABAAIAAAAGAAUAAwADAAEAAAAFAAUAAwABAAEAAAAEAAQAAwADAAAAAAALAAIAAAADAAEAAAAKAAIAAwADAAEAAAAIAAIAAwADAAEAAAAGAAIAAwADAAEAAAAEAAIAAAADAAEAAAACAAQAAwADAAEAAAACAAIAAwADAAEAAAAKAAUAAwADAAEAAAAMAAUAAAADAAEAAAAMAAEAAwADAAAAAAADAAIAAwABAAIAAAAEAAUAAwADAAEAAAAFAAQAAwAEAAAAAAAHAAYAAwADAAAAAAAHAAUAAwADAAEAAAAHAAIAAwABAAEAAAAMAAQAAAADAAEAAAAIAAQAAAADAAEAAAAEAAMAAAADAAEAAAACAAUAAAADAAEAAAALAAUAAAADAAEAAAA=")
 tile_set = SubResource("TileSet_spaah")
+
+[node name="MazeStartBlock" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MazeStartBlock"]
+position = Vector2(345.086, 129.032)
+shape = SubResource("RectangleShape2D_rnooo")
 
 [node name="Flower1Lily" parent="." node_paths=PackedStringArray("flowerContainer", "FlowerSprite") instance=ExtResource("3_a1gd3")]
 position = Vector2(1606, 324)
@@ -148,11 +221,12 @@ flowerContainer = NodePath("../FlowerCollection")
 FlowerSprite = NodePath("AnimatedSprite2D")
 FlowerTexture = ExtResource("9_hg7bp")
 
-[node name="Player" parent="." node_paths=PackedStringArray("heartContainer") instance=ExtResource("6_jccqe")]
+[node name="Player" parent="." node_paths=PackedStringArray("heartContainer", "_pauseAnimator") instance=ExtResource("6_jccqe")]
 position = Vector2(321, 199)
 collision_layer = 2
 collision_mask = 57
 heartContainer = NodePath("../Hearts")
+_pauseAnimator = NodePath("../GameOverGood/AnimationPlayer")
 speed = 400.0
 
 [node name="Bee" parent="." instance=ExtResource("7_hhlrc")]
@@ -249,6 +323,62 @@ theme_override_font_sizes/font_size = 50
 [node name="Timer" parent="Timer" index="0"]
 wait_time = 20.0
 one_shot = true
+
+[node name="GameOverGood" type="Control" parent="."]
+process_mode = 2
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 973.0
+offset_top = 554.0
+offset_right = 973.0
+offset_bottom = 554.0
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="GameOverGood"]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_qu2pi")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOverGood"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -775.0
+offset_top = -388.0
+offset_right = 775.0
+offset_bottom = 388.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="GameOverGood"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.768
+anchor_right = 0.5
+anchor_bottom = 0.768
+offset_left = -281.0
+offset_top = 207.44
+offset_right = 281.0
+offset_bottom = 299.44
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOverGood"]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_wwcei")
+}
 
 [connection signal="body_entered" from="MazeEnd" to="GameManager" method="OnMazeEndBodyEntered"]
 
